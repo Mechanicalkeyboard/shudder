@@ -1,4 +1,4 @@
-sqs_prefix = "reporting-interaction-shutdown"
+sqs_prefix = "{{service}}-shutdown"
 region = "{{region}}"
 sns_topic = "arn:aws:sns:us-east-1:{{accountArn}}:{{env}}-{{service}}-instance-shutdowns"
 commands = [["/serviceShutdown.py", "stop"]]
