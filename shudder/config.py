@@ -16,10 +16,18 @@
 import os
 import toml
 
+#old
+# CONFIG_FILE = os.environ.get('CONFIG_FILE', "shudder.toml")
+# CONFIG = {}
+# with open(CONFIG_FILE, 'r') as f:
+#     CONFIG = toml.loads(f.read())
+# print(CONFIG)
 
-CONFIG_FILE = os.environ.get('CONFIG_FILE', "shudder.toml")
-CONFIG = {}
+service=os.environ['service']
+region=os.environ['region']
+environment=os.environ['environment']
+accountArn=os.environ['accountArn']
 
 
-with open(CONFIG_FILE, 'r') as f:
-    CONFIG = toml.loads(f.read())
+CONFIG = {'sqs_prefix': service + '-shutdown', 'region': region, 'sns_topic':"arn:aws:sns:"+accountArn+':'+region+'-'+environment+'-'+service+'-shutdown','commands':'[["python","shudder/serviceShutdown.py"]]'}
+print(CONFIG)
