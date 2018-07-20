@@ -29,5 +29,5 @@ environment=os.environ['environment']
 accountArn=os.environ['accountArn']
 
 
-CONFIG = {'sqs_prefix': service + '-shutdown', 'region': region, 'sns_topic':"arn:aws:sns:"+region+':'+accountArn+':'+service+'-'+environment+'-shutdown','commands':'[["python","shudder/serviceShutdown.py"]]'}
+CONFIG = {'sqs_prefix': service + '-shutdown', 'region': region, 'sns_topic':"arn:aws:sns:"+region+':'+accountArn+':'+region+'-'+service+'-'+environment+'-shutdown','commands':'[["python","shudder/serviceShutdown.py"]]'}
 print(CONFIG)
